@@ -16,11 +16,12 @@ const moviesStore = {
   namespaced: true,
   state: {
     top250Ids: Ids,
-    currentPage: 1,
+    currentPage: 2,
     moviesPerPage: 12,
     curMovies: {},
   },
   getters: {
+    getCurMovies:({curMovies}) => curMovies,
     getCurrentPage: ({ currentPage }) => currentPage,
     getMoviesPerPage: ({ moviesPerPage }) => moviesPerPage,
     getCurrentIds: ({ top250Ids }) => (from, to) => top250Ids.slice(from, to),
@@ -31,6 +32,12 @@ const moviesStore = {
     }
   },
   actions: {
+    initMoviesStore: {
+      handler({ dispatch }) {
+        dispatch("fetchMovies")
+      },
+      root: true
+    },
     async fetchMovies({ getters, commit }) {
       try {
         const { getCurrentPage, getMoviesPerPage, getCurrentIds } = getters;

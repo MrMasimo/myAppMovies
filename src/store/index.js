@@ -4,7 +4,7 @@ import movies from './modules/movies'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
   },
   mutations: {
@@ -14,3 +14,7 @@ export default new Vuex.Store({
   modules: {movies,
   }
 })
+
+store.dispatch("initMoviesStore");
+
+export default store;
