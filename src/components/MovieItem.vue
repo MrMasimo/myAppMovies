@@ -11,7 +11,7 @@
             <BButton size="md" block variant="outline-light">Edit</BButton>
           </div>
           <div class="col pl-2">
-            <BButton size="md" block variant="outline-light">Remote</BButton>
+            <BButton size="md" block variant="outline-light" @click=removeEmitItem >Remote</BButton>
           </div>
         </div>
       </div>
@@ -32,6 +32,11 @@ export default {
     posterBg(){
       return {
         "background-image": `url(${this.movie.Poster})`};
+    }
+  },
+  methods:{
+    removeEmitItem (){
+      this.$emit("removeMovie" , { id: this.movie.imdbID , title: this.movie.Title } )
     }
   }
 
