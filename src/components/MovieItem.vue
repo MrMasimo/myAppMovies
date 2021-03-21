@@ -8,7 +8,7 @@
         </div>
         <div class="movie-item-control row no-gutters">
           <div class="col pr-2">
-            <BButton size="md" block variant="outline-light">Edit</BButton>
+            <BButton size="md" block variant="outline-light" @click=infoEmitItem>Info</BButton>
           </div>
           <div class="col pl-2">
             <BButton size="md" block variant="outline-light" @click=removeEmitItem >Remote</BButton>
@@ -35,6 +35,9 @@ export default {
     }
   },
   methods:{
+    infoEmitItem () {
+      this.$emit("infoMovie" , this.movie.imdbID);
+    },
     removeEmitItem (){
       this.$emit("removeMovie" , { id: this.movie.imdbID , title: this.movie.Title } )
     }
@@ -51,6 +54,7 @@ export default {
     overflow: hidden;
     transition: all 0.2s ease;
     height: 400px;
+    margin-bottom: 20px;
   }
   .movie-item:hover{
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.7);
