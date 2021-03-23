@@ -10,7 +10,7 @@
           <div class="col pr-2">
             <BButton size="md" block variant="outline-light" @click=infoEmitItem>Info</BButton>
           </div>
-          <div class="col pl-2">
+          <div class="col pl-2" v-if="!getToggleSearch">
             <BButton size="md" block variant="outline-light" @click=removeEmitItem >Remote</BButton>
           </div>
         </div>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   name:'MovieItem',
   props: {
@@ -29,9 +31,9 @@ export default {
     }
   },
   computed:{
+    ...mapGetters("movies" , ["getToggleSearch"]),
     posterBg(){
-      return {
-        "background-image": `url(${this.movie.Poster})`};
+      return {"background-image": `url(${this.movie.Poster})`};
     }
   },
   methods:{

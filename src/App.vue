@@ -5,7 +5,8 @@
     <Loader />
     <PosterBg :poster= posterBg />
     <MoviesList :list=getCurMovies @changePoster="onChangePoster" />
-    <MoviesPaginator :currentPage=getCurrentPage
+    <MoviesPaginator v-if ="!getToggleSearch"
+    :currentPage=getCurrentPage
     :total=getTotal
     :perPage=getMoviesPerPage
     @changedPage="onChangePage"/>
@@ -35,7 +36,7 @@ export default {
     posterBg: "",
   }),
   computed: {
-   ...mapGetters('movies', ["getCurMovies", "getCurrentPage", "getMoviesPerPage" , "getTotal"]),
+   ...mapGetters('movies', ["getCurMovies", "getCurrentPage", "getMoviesPerPage" , "getTotal" , "getToggleSearch"]),
   },
   watch: {
     "$route.query": {

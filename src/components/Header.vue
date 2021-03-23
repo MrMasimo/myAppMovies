@@ -33,11 +33,10 @@ export default {
     onSearchedValue(val) {
       if (val) {
         this.searchMovies(val);
-        this.searchProcess(true);}
+        }
       else {
         this.fetchMovies();
         this.searchProcess(false);}
-
     }
   }
 }

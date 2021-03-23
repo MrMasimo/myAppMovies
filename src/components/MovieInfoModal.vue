@@ -1,7 +1,7 @@
 <template>
   <div class="movie-info-wrap">
     <header class="movie-info-header">
-      <h6 class="movie-header-title">Movie view</h6>
+      <h6 class="movie-header-title">About movie</h6>
       <BIconX class="close-icon" @click="closeModal" />
     </header>
     <div class="movie-info-content">

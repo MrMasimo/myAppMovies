@@ -18,9 +18,10 @@ export default {
     showNotification( { msg, title, variant } ){
       this.$bvToast.toast(msg, {
           title,
+          toaster: "b-toaster-bottom-right",
           variant,
           solid: true,
-          
+
         })
     }
   }

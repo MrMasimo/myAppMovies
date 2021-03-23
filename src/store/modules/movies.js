@@ -5,6 +5,8 @@ import mutations from '../mutations';
 function serializeResponse(movies)
 {
   return movies.reduce((acc, movie) => {
+    if (movie.Poster === "N/A")
+      movie.Poster = require('@/assets/defaultPoster.jpg');
     acc[movie.imdbID] = movie;
     return acc;
   },{})
@@ -19,7 +21,8 @@ const moviesStore = {
     currentPage: 1,
     moviesPerPage: 12,
     curMovies: {},
-    isSearch: false
+    isSearch: false,
+
   },
   getters: {
     getCurMovies: ({ curMovies }) => curMovies,
@@ -72,8 +75,12 @@ const moviesStore = {
 
         if (response.Error)
           throw Error(response.Error);
-
-        const searchMovies = serializeResponse(response.Search);
+          commit("TOGGLE_SEARCH", true);
+          const request = response.Search.map(({ imdbID }) =>
+           axios.get(`/?i=${imdbID}`)
+         );
+        const fullResponse = await Promise.all(request);
+        const searchMovies = serializeResponse(fullResponse);
         commit("MOVIES", searchMovies);
 
       } catch (error) {
