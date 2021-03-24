@@ -1,5 +1,5 @@
 
-[Application](1) for searching info about movie using Omdb API.
+Application for searching info about movie using Omdb API.
 
 Application consist from next element:
 
@@ -20,7 +20,6 @@ __4. Card movies__
 For getting more info about movie need to push button _Info_
 
 
-[1]: https://mrmasimo.github.io/myAppMovies/index.html
 
 
 
